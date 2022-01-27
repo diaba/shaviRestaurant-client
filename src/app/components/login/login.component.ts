@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
     private loginservice:LoginService) { }
 
   ngOnInit(): void {
+    
+    
   }
   checkLogin() {
     (this.loginservice.authenticate(this.username, this.password).subscribe(
@@ -32,7 +34,9 @@ export class LoginComponent implements OnInit {
       }
     )
     );
-
+    console.log(this.username);
+    console.log(this.invalidLogin);
+    console.log(this.password);
   }
 
 }
