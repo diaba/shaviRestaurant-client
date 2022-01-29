@@ -11,6 +11,8 @@ export class LoginService {
   // Provide username and password for authentication, and once authentication is successful, 
   //store JWT token in session
     authenticate(username:string, password:string) {
+      console.log("username: "+username);
+      console.log("Password: "+password);
       return this.httpClient
         .post<any>("http://localhost:8080/auth/users/login", {'email': username, 'password': password })
         .pipe(

@@ -23,7 +23,5 @@ URL:string ="http://localhost:8080/api/meals";
     return this.httpClient
         .get<Meal[]>("http://localhost:8080/api/meals");
   }
-  // getEmployees() {
-  //   return this.httpClient.get<Employee[]>("http://localhost:8080/employees");
-  // }
+ 
 }

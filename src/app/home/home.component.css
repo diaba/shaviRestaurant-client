@@ -3,34 +3,24 @@ body {
 }
 
 .container {
-    width: 900px
+ 
 }
 
 .card {
     background-color: #fff;
     border: none;
-    border-radius: 10px;
-    width: 190px;
+    border-radius: 60px 60px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 .image-container {
     position: relative
 }
 .thumbnail-image {
-    border-radius: 20px !important;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    border-radius: 10px !important;
+    box-shadow: 0 4px 8px 0 rgba(14, 7, 0, 0.803), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
-.first {
-    position: absolute;
-    width: 100%;
-    padding: 9px
-}
-.buy {
-    font-size: 12px;
-    color: purple;
-    font-weight: 500
-}
-.dress-name {
+
+.meal-name {
     font-size: 13px;
     font-weight: bold;
     width: 75%

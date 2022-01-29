@@ -2,22 +2,22 @@
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-3" *ngFor="let food of meals">
+        <div class="col-4" *ngFor="let food of meals">
             <div class="card">
                 <div class="image-container">
                   <a routerLink="/food/{{food.id}}"><img src="{{food.imageUrl}}" class="img-fluid rounded thumbnail-image"></a> 
                 </div>
                 <div class="product-detail-container p-2">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="dress-name">{{food.name}}</h5>
+                        <h5 class="meal-name">{{food.name}}</h5>
                         <div class="d-flex flex-column mb-2"> <span class="new-price">{{food.price|currency}}</span> </div>
                     </div>
                     <div class="d-flex justify-content-between align-items-center pt-1">
 <span>
   Serving:  {{food.serving}}
 </span>                         </div>
-                    <div class="d-flex justify-content-between align-items-center pt-1">
-                        <div>   </div> <span class="btn btn-primary">Add To Cart +</span>
+                    <div class="d-flex justify-content-center align-items-center pt-1">
+                        <span class="btn btn-primary">Add To Cart +</span>
                     </div>
                 </div>
             </div>
