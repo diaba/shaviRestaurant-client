@@ -19,6 +19,7 @@ export class CartService {
   
     addToCart(meal: Meal) {
       this.items.push(meal);
+      meal.quantity = 1;
       console.log("meal: "+this.getItems());
 
     }
