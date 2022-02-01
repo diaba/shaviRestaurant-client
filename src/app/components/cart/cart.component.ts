@@ -6,40 +6,23 @@ import { Meal } from 'src/app/service/meals.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  //meals:Meal[] | undefined;  
-  items:Meal[] = this.cartService.getItems();
-  cart!:[];
-  constructor(private cartService: CartService,private http: HttpClient) { }
-  
-  changeQuantity(cartItem:Meal, quantityInString:string){
-    const quantity= parseInt(quantityInString);
+  items: Meal[] = this.cartService.getItems();
+  cart!: [];
+  constructor(private cartService: CartService, private http: HttpClient) {}
+
+  changeQuantity(cartItem: Meal, quantityInString: string) {
+    const quantity = parseInt(quantityInString);
     this.cartService.changeQuantity(cartItem.id, quantity);
-   // this.setCart();
+  }
+  removeFromCart(meal: Meal) {
+    this.cartService.removeFromCart(meal.id);
+    // refresh the cart
+    this.items = this.cartService.getItems();
   }
   ngOnInit(): void {
-    console.log("Cart component => items in cart"+this.items.length);
-    
+    console.log('Cart component => items in cart' + this.items.length);
   }
-//     setCart(){
-//     this.cart = this.cartService.getCart();
-// }
-
-
 }
-// cart!:Cart;
-//   constructor(private cartService: CartService) { 
-//     this.setCart();
-//   }
-//   ngOnInit(): void {
-//   }
-
-//   removeFromCart(cartItem:CartItem){
-//     this.cartService.removeFromCart(cartItem.food.id);
-//     this.setCart();
-//   }
-
-
-

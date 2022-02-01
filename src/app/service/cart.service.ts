@@ -14,18 +14,19 @@ export class CartService {
   constructor(private http: HttpClient) { }
   items :Meal[]=[];  // items in the cart
   meals: Meal[] = [];
-  cart: CartItem | undefined; // model of our cart
+  cart: CartItem[] | undefined; // model of our cart
 //   /* . . . */
   
     addToCart(meal: Meal) {
       this.items.push(meal);
       console.log("meal: "+this.getItems());
-      
+
     }
     changeQuantity(foodId:number, quantity:number){
     let cartItem = this.items.find(item => item.id === foodId);
     if(!cartItem) return;
     cartItem.quantity = quantity;
+    
   }
     getItems() {
       return this.items;
@@ -47,14 +48,14 @@ export class CartService {
 //     this.items.push(new CartItem(meal));
 //   }
 
-  // removeFromCart(foodId:number): void{
-  //   this.cart.items = 
-  //   this.cart.items.filter(item => item.food.id != foodId);
-  // }
+  removeFromCart(foodId:number): void{
+    this.items = 
+    this.items.filter(item => item.id != foodId);
+  }
 
 
 
-  // getCart():Cart{
+  // getCart():CartItem[]{
   //   return this.cart;
   // }
 }
