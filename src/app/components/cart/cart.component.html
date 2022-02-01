@@ -1,38 +1,8 @@
-<!-- <div class="container-checkout">
-    <div class="items">
-        <h5>Confirm your order</h5>
-        <div class="item-detail">
-            <div class="name">1. Item 1</div>
-            <div class="price">
-                <div class="price-detail">$32.99</div>
-                <div class="quHandler"></div>
-            </div>
-            
-        </div>
-    </div>
-    <div class="subtotal"><span>Subtotal</span></div>
-    <div class="tax"><span>Tax</span></div>
-    <div class="total"><span>Total</span></div>
-    
-    <div class="d-flex justify-content-center align-items-center pt-1">
-    <div class="btn btn-block">Add To Cart +</div>
-</div>
-</div> -->
 
-
-
-
-<!--  -->
-
-<!-- <app-not-found [visible]="!cart || cart.items.length <=0"
-notFoundMessage="Cart Page Is Empty!"
-resetLinkText="Go To Homepage"
->
-</app-not-found> -->
-<div  class="container">
-    <!-- <div *ngIf="cart && cart.items.length >0" class="container"></div> -->
+<div  class="container"> 
+    <div *ngIf="items.length >0" class="container"></div>
     <ul>
-        <!-- <li *ngFor="let cartItem of cart.items"> -->
+       <li *ngFor="let cartItem of items">
             <li >
             <div>
                 <img src="/src/assets/images/img-300X199.png" alt="cartItem.food.name">
@@ -44,8 +14,9 @@ resetLinkText="Go To Homepage"
             </div>
 
             <div>
-                <!-- <select #quantitySelect (change)="changeQuantity(cartItem,quantitySelect.value)"> -->
-                <select #quantitySelect >
+                <!-- <select #quantitySelect (change)="changeQuantity(cartItem,quantitySelect.value)">
+               -->
+                    <select #quantitySelect > 
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -58,11 +29,11 @@ resetLinkText="Go To Homepage"
                 333| currency 
             </div>
 
-            <div>
-                <!-- <button class="remove-button" (click)="removeFromCart(cartItem)">
+            <!-- <div>
+                <button class="remove-button" (click)="removeFromCart(cartItem)">
                     Remove
-                </button> -->
-            </div>
+                </button>
+            </div> -->
         </li>
     </ul>
 
@@ -74,3 +45,13 @@ resetLinkText="Go To Homepage"
     </div>
 
 </div>
+
+
+
+
+ <!-- <h3>Cart</h3>
+
+<div class="cart-item" *ngFor="let item of items">
+  <span>{{ item.name }}</span>
+  <span>{{ item.price | currency }}</span>
+</div>  -->

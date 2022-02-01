@@ -5,11 +5,12 @@ import { environment } from 'src/environments/environment';
 
 export interface Meal{
   
-     id:number;
+   id:number;
    name:string;
    serving:string;
-  imageUrl:string;
+   imageUrl:string;
    price:number;
+   quantity:number;
    orderList:{};
   }
 

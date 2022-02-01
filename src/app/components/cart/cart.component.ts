@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -6,13 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
-  constructor() { }
-
+  items = this.cartService.getItems();
+  cart!:[];
+  constructor(private cartService: CartService,private http: HttpClient) { }
+  // changeQuantity(cartItem:items, quantityInString:string){
+  //   const quantity= parseInt(quantityInString);
+  //   this.cartService.changeQuantity(cartItem.food.id, quantity);
+  //   this.setCart();
+  // }
   ngOnInit(): void {
+    console.log("Cart component => items in cart"+this.items.length);
+    
   }
 
-// }
+}
 // cart!:Cart;
 //   constructor(private cartService: CartService) { 
 //     this.setCart();
@@ -25,12 +34,8 @@ export class CartComponent implements OnInit {
 //     this.setCart();
 //   }
 
-//   changeQuantity(cartItem:CartItem, quantityInString:string){
-//     const quantity= parseInt(quantityInString);
-//     this.cartService.changeQuantity(cartItem.food.id, quantity);
-//     this.setCart();
-//   }
+
 
 //   setCart(){
 //     this.cart = this.cartService.getCart();
-}
+// }

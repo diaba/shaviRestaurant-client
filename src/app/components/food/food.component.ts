@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from 'src/app/service/cart.service';
 import { LoginService } from 'src/app/service/login.service';
 import { Meal, MealsService } from 'src/app/service/meals.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
@@ -11,11 +12,17 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
 })
 export class FoodComponent implements OnInit {
 
+
   meal: Meal | undefined;
   meals: Meal[] = [];
-  constructor(private mealService: MealsService, private route: ActivatedRoute) { }
+  constructor(private mealService: MealsService, private route: ActivatedRoute
+   ) { }
 
   ngOnInit(): void { 
+   
+
+
+
     console.log("FoodComponent...........");
   this.getMeals();
   console.log("Meals........"+this.meals);

@@ -1,35 +1,65 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Meal } from './meals.service';
+export interface CartItem{
+  meals: Meal;
+  quantity: number;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor() { }
-}
-// private cart:Cart = new Cart();
+  constructor(private http: HttpClient) { }
+  items :Meal[]=[];  // items in the cart
+  meals: Meal[] = [];
+  cart: CartItem | undefined; // model of our cart
+//   /* . . . */
   
-//   addToCart(food: Food):void{
-//     let cartItem = this.cart.items.find(item => item.food.id === food.id);
+    addToCart(meal: Meal) {
+     // add to cart items
+    //  check not in cart item
+    // yes add quantity plus 1
+      let newItem = this.items.find(item => item.id == meal.id);
+      if(newItem){
+        newItem.quantity = newItem.quantity + 1;
+      }
+      
+    }
+  //   changeQuantity(foodId:number, quantity:number){
+  //   let cartItem = this.cart.items.find(item => item.food.id === foodId);
+  //   if(!cartItem) return;
+  //   cartItem.quantity = quantity;
+  // }
+    getItems() {
+      return this.meals;
+    }
+  
+//     clearCart() {
+//       this.meals = [];
+//       return this.meals;
+//     }
+// }
+// items :Meal[]=[];
+// CartItem :{ meal: Meal; quantity: number; } | undefined 
+//   addToCart(meal: Meal):void{
+//     let cartItem = this.items.find(item => item.id === meal.id);
 //     if(cartItem){
-//       this.changeQuantity(food.id, cartItem.quantity + 1);
+//       this.changeQuantity(meal.id, cartItem.quantity + 1);
 //       return;
 //     }
-//     this.cart.items.push(new CartItem(food));
+//     this.items.push(new CartItem(meal));
 //   }
 
-//   removeFromCart(foodId:number): void{
-//     this.cart.items = 
-//     this.cart.items.filter(item => item.food.id != foodId);
-//   }
+  // removeFromCart(foodId:number): void{
+  //   this.cart.items = 
+  //   this.cart.items.filter(item => item.food.id != foodId);
+  // }
 
-//   changeQuantity(foodId:number, quantity:number){
-//     let cartItem = this.cart.items.find(item => item.food.id === foodId);
-//     if(!cartItem) return;
-//     cartItem.quantity = quantity;
-//   }
 
-//   getCart():Cart{
-//     return this.cart;
-//   }
-// }
+
+  // getCart():Cart{
+  //   return this.cart;
+  // }
+}

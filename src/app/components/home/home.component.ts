@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/service/cart.service';
 import { Meal, MealsService } from './../../service/meals.service';
 
 
@@ -9,10 +10,16 @@ import { Meal, MealsService } from './../../service/meals.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-meals:Meal[] | undefined;
+meals:Meal[] | undefined;  
 
+addToCart(meal: Meal) {
+  this.cartService.addToCart(meal);
+  console.log("Cart...."+meal.name);
+  
+  window.alert('Your meal has been added to the cart!');
+}
   constructor(
-    private mealsService:MealsService) { }
+    private mealsService:MealsService  , private cartService: CartService) { }
 
   ngOnInit(): void {
     console.log("HomeComponent..............");
