@@ -1,28 +1,47 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map } from "rxjs/operators";
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Customer } from '../model/Customer';
+
+const AUTH_API = 'http://localhost:8080/auth/users/';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
 
-  constructor(private httpClient: HttpClient) {}
-  // Provide username and password for authentication, and once authentication is successful, 
-  //store JWT token in session
-    authenticate(username:string, password:string) {
-      console.log("username: "+username);
-      console.log("Password: "+password);
-      return this.httpClient
-        .post<any>("http://localhost:8080/auth/users/login", {'email': username, 'password': password })
-        .pipe(
-          map(userData => {
-            sessionStorage.setItem("username", username);
-            let tokenStr = "Bearer " + userData.token;
-            sessionStorage.setItem("token", tokenStr);
-            return userData;
-          })
-        );
-    }
+
+export class LoginService {
+  
+
+  serverUrl = environment.baseUrl;
+
+  constructor(private http: HttpClient) {
+
+  }
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(AUTH_API + 'login', {
+      email,
+      password
+    }, httpOptions);
+  }
+//this.firstName,this.lastName,this.address, this.phone, this.password,this.username
+  register(firstName: string, lastName: string, address: string,phone:string, password: string, email: string): Observable<any> {
+    return this.http.post(AUTH_API + 'register', {
+     firstName,
+     lastName,
+     address,
+     phone,
+     password,
+      email
+    }, httpOptions);
+  }
+  
   
 }
