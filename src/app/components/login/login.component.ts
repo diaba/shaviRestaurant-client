@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   
   @Input() error: string | null | undefined;
   constructor(private router: Router,
-    private loginService:LoginService, private tokenStorage: TokenStorageService) { }
+    private loginService:LoginService, 
+    private tokenStorage: TokenStorageService) { }
 
     ngOnInit(): void {
       if (this.tokenStorage.getToken()) {
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
         data => {
           this.tokenStorage.saveToken(data.jwt);
           this.tokenStorage.saveUser(data);
-  console.log("data: "+data.accessToken);
+          console.log("data: "+data.accessToken);
   
           this.invalidLogin = false;
       

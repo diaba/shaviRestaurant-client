@@ -1,11 +1,15 @@
 
-<!-- 
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-4" *ngFor="let food of meals">
             <div class="card">
                 <div class="image-container">
-                    <a routerLink="/food/{{food.id}}"><img src="{{food.imageUrl}}"
+            
+                    <a
+                    [routerLink]="['/meal', food.id]"> 
+                    
+                    <img src="{{food.imageUrl}}"
                             class="img-fluid rounded thumbnail-image"></a>
                 </div>
                 <div class="product-detail-container p-2">
@@ -26,8 +30,8 @@
             </div>
         </div>
     </div>
-</div> -->
-    <div class="wrapper-grid">
+</div>
+    <!-- <div class="wrapper-grid">
 
             <div class="card">
                 <div class="image-container">
@@ -134,5 +138,5 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Meal, MealsService } from '../service/meals.service';
+import { Meal, MealsService } from './../../service/meals.service';
+
 
 @Component({
   selector: 'app-home',
@@ -9,16 +10,22 @@ import { Meal, MealsService } from '../service/meals.service';
 })
 export class HomeComponent implements OnInit {
 meals:Meal[] | undefined;
+
   constructor(
     private mealsService:MealsService) { }
 
   ngOnInit(): void {
+    console.log("HomeComponent..............");
+    
     this.mealsService.getALlMeals().subscribe(
       response => {
-        console.log(response);
         
-        this.meals = response}
+        this.meals = response
+        console.log("Meals : "+this.meals);
+      
+      }
     );
+    
   }
 
 }
