@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
-import { RegisterService } from 'src/app/service/register.service';
+import { TokenStorageService } from 'src/app/service/token-storage.service';
+
 
 @Component({
   selector: 'app-login',
@@ -11,32 +12,39 @@ import { RegisterService } from 'src/app/service/register.service';
 export class LoginComponent implements OnInit {
   username = ''
   password = ''
-  invalidLogin = false
+  invalidLogin = false;
+  
   
   @Input() error: string | null | undefined;
   constructor(private router: Router,
-    private loginservice:LoginService) { }
+    private loginService:LoginService, private tokenStorage: TokenStorageService) { }
 
-  ngOnInit(): void {
-    
-    
-  }
-  checkLogin() {
-    (this.loginservice.authenticate(this.username, this.password).subscribe(
-      data => {
-        this.router.navigate([''])
-        this.invalidLogin = false
-      },
-      error => {
-        this.invalidLogin = true
-        this.error = error.message;
-
+    ngOnInit(): void {
+      if (this.tokenStorage.getToken()) {
+        this.invalidLogin = true;
       }
-    )
-    );
-    console.log(this.username);
-    console.log(this.invalidLogin);
-    console.log(this.password);
+    }
+  
+    checkLogin(): void {
+   
+  
+      this.loginService.login(this.username, this.password).subscribe(
+        data => {
+          this.tokenStorage.saveToken(data.jwt);
+          this.tokenStorage.saveUser(data);
+  console.log("data: "+data.accessToken);
+  
+          this.invalidLogin = false;
+      
+          this.router.navigate(['/']);
+        },
+        err => {
+          this.error = err.error.message;
+          this.invalidLogin = true;
+        }
+      );
+    }
+  
+ 
   }
-
-}
+  
