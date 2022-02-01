@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 export class Meal{
   constructor( 
@@ -12,16 +13,18 @@ export class Meal{
 
   }
 }
+const MEAL_API = `${environment.baseUrl}/api/meals/` ;
+
 @Injectable({
   providedIn: 'root'
 })
 export class MealsService {
-URL:string ="http://localhost:8080/api/meals";
+
 
   constructor(private httpClient: HttpClient) { }
   getALlMeals(){
     return this.httpClient
-        .get<Meal[]>("http://localhost:8080/api/meals");
+        .get<Meal[]>(`{MEAL_API}`);
   }
  
 }

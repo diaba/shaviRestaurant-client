@@ -2,26 +2,29 @@ body {
     background-color: #eee
 }
 
-.container {
- 
-}
-
-.card {
+.card { 
+    margin:1rem;
+    overflow: hidden;
     background-color: #fff;
     border: none;
     border-radius: 60px 60px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 .image-container {
-    position: relative
+    position: relative;
 }
 .thumbnail-image {
-    border-radius: 10px !important;
-    box-shadow: 0 4px 8px 0 rgba(14, 7, 0, 0.803), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    border-radius: 20px !important;
+    box-shadow: 0 1px 8px 0 #F30E0E, 0 6px 20px 0 #FFA602
 }
 
 .meal-name {
     font-size: 13px;
     font-weight: bold;
     width: 75%
+}
+.wrapper-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 20rem);
+    justify-content: center;
 }

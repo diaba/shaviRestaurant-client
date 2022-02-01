@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shavi-client';
+  public ROOT_URl='http://localhost:8080';
 }

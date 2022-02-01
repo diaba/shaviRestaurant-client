@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+/* FFA602 F30E0E brand color */
+body{
+    margin:2rem;
+}
+.container{
+    overflow: hidden;
+}
+.btn{
+    background-color: #FFA602;
+}
+.btn:hover{
+    background-color: #F30E0E;
+}
+
+.container-register, .container-login{
+    display:flex;
+    justify-content: center;;
+    align-items: center;
+}
+
+button, .btn,
+input {
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    border-radius: 100px;
+    padding: 16px;
+  /* //  background-color: #EBECF0; */
+    text-shadow: 1px 1px 0 #F30E0E;
+}

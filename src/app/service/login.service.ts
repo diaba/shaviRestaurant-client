@@ -4,9 +4,8 @@ import { map } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Customer } from '../model/Customer';
 
-const AUTH_API = 'http://localhost:8080/auth/users/';
+const AUTH_API = `${environment.baseUrl}/auth/users/` ;
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,7 +19,7 @@ const httpOptions = {
 export class LoginService {
   
 
-  serverUrl = environment.baseUrl;
+
 
   constructor(private http: HttpClient) {
 
