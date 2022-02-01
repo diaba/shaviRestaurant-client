@@ -14,21 +14,20 @@
             </div>
 
             <div>
-                <!-- <select #quantitySelect (change)="changeQuantity(cartItem,quantitySelect.value)">
-               -->
-                    <select #quantitySelect > 
+                <select #quantitySelect (change)="changeQuantity(item,quantitySelect.value)">
+          
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
                     <option>5</option>
                 </select>
-            </div>
+           
 
             <div>
                 {{item.price | currency }} 
             </div>
-
+</div>
             <!-- <div>
                 <button class="remove-button" (click)="removeFromCart(cartItem)">
                     Remove

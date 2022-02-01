@@ -13,15 +13,20 @@ export class CartComponent implements OnInit {
   items:Meal[] = this.cartService.getItems();
   cart!:[];
   constructor(private cartService: CartService,private http: HttpClient) { }
-  // changeQuantity(cartItem:items, quantityInString:string){
-  //   const quantity= parseInt(quantityInString);
-  //   this.cartService.changeQuantity(cartItem.food.id, quantity);
-  //   this.setCart();
-  // }
+  
+  changeQuantity(cartItem:Meal, quantityInString:string){
+    const quantity= parseInt(quantityInString);
+    this.cartService.changeQuantity(cartItem.id, quantity);
+   // this.setCart();
+  }
   ngOnInit(): void {
     console.log("Cart component => items in cart"+this.items.length);
     
   }
+//     setCart(){
+//     this.cart = this.cartService.getCart();
+// }
+
 
 }
 // cart!:Cart;
@@ -38,6 +43,3 @@ export class CartComponent implements OnInit {
 
 
 
-//   setCart(){
-//     this.cart = this.cartService.getCart();
-// }

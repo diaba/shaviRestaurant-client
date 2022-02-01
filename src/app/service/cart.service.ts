@@ -18,22 +18,15 @@ export class CartService {
 //   /* . . . */
   
     addToCart(meal: Meal) {
-     // add to cart items
-    //  check not in cart item
-    // yes add quantity plus 1
-      // let newItem = this.items.find(item => item.id == meal.id);
-      // if(newItem){
-      //   newItem.quantity = newItem.quantity + 1;
-      // }
       this.items.push(meal);
       console.log("meal: "+this.getItems());
       
     }
-  //   changeQuantity(foodId:number, quantity:number){
-  //   let cartItem = this.cart.items.find(item => item.food.id === foodId);
-  //   if(!cartItem) return;
-  //   cartItem.quantity = quantity;
-  // }
+    changeQuantity(foodId:number, quantity:number){
+    let cartItem = this.items.find(item => item.id === foodId);
+    if(!cartItem) return;
+    cartItem.quantity = quantity;
+  }
     getItems() {
       return this.items;
     }
