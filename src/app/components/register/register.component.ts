@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { RegisterService } from 'src/app/service/register.service';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-register',
@@ -19,21 +19,17 @@ export class RegisterComponent implements OnInit {
   @Input() error: string | null | undefined;
   invalidLogin = false
 
-  constructor(private registerService:RegisterService, private router:Router) { }
+  constructor(private loginService:LoginService, private router:Router) { }
 
-  ngOnInit(): void {
- 
-    
-    console.log(this.error);
-    
-    
-  }
+
+
+  ngOnInit(): void {  }
   register() {
-    (this.registerService.register(this.firstName,this.lastName,this.address, this.phone, this.password,this.username).subscribe(
+    (this.loginService.register(this.firstName,this.lastName,this.address, this.phone, this.password,this.username).subscribe(
       data => {
         console.log(data);
         
-        this.router.navigate([''])
+        this.router.navigate(['/login'])
         this.invalidLogin = false
       },
       error => {
@@ -45,4 +41,6 @@ export class RegisterComponent implements OnInit {
     );
 
   }
+
+
 }
