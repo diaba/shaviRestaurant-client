@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
+import { Meal } from 'src/app/service/meals.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,7 +9,8 @@ import { CartService } from 'src/app/service/cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  items = this.cartService.getItems();
+  //meals:Meal[] | undefined;  
+  items:Meal[] = this.cartService.getItems();
   cart!:[];
   constructor(private cartService: CartService,private http: HttpClient) { }
   // changeQuantity(cartItem:items, quantityInString:string){

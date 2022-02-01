@@ -1,15 +1,15 @@
 
 <div  class="container"> 
-    <div *ngIf="items.length >0" class="container"></div>
-    <ul>
-       <li *ngFor="let cartItem of items">
-            <li >
+
+    <div *ngIf="items.length >0" class="container">
+    <ul *ngFor="let item of items">
+          <li>
             <div>
-                <img src="/src/assets/images/img-300X199.png" alt="cartItem.food.name">
+                <img src="{{item.imageUrl}}" alt="cartItem.food.name">
             </div>
             <div>
                 <a routerLink="/food/cart">
-                    carte
+                    {{ item.name}}
                 </a>
             </div>
 
@@ -26,7 +26,7 @@
             </div>
 
             <div>
-                333| currency 
+                {{item.price | currency }} 
             </div>
 
             <!-- <div>
@@ -36,7 +36,7 @@
             </div> -->
         </li>
     </ul>
-
+    </div>
     <div class="checkout">
         <!-- <div>
             <div class="foods-count">{{cart.items.length}}</div>

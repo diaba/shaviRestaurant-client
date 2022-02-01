@@ -21,10 +21,12 @@ export class CartService {
      // add to cart items
     //  check not in cart item
     // yes add quantity plus 1
-      let newItem = this.items.find(item => item.id == meal.id);
-      if(newItem){
-        newItem.quantity = newItem.quantity + 1;
-      }
+      // let newItem = this.items.find(item => item.id == meal.id);
+      // if(newItem){
+      //   newItem.quantity = newItem.quantity + 1;
+      // }
+      this.items.push(meal);
+      console.log("meal: "+this.getItems());
       
     }
   //   changeQuantity(foodId:number, quantity:number){
@@ -33,7 +35,7 @@ export class CartService {
   //   cartItem.quantity = quantity;
   // }
     getItems() {
-      return this.meals;
+      return this.items;
     }
   
 //     clearCart() {
