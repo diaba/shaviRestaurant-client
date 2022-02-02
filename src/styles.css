@@ -29,3 +29,8 @@ input {
   /* //  background-color: #EBECF0; */
     text-shadow: 1px 1px 0 #F30E0E;
 }
+.centerMe{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}

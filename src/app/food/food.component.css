@@ -1,0 +1,17 @@
+.container-food{
+    display:grid;
+    grid-template-rows: repeat(auto-fit, 20rem);
+    justify-content: center;
+    border-radius: 50px;
+}
+.img-container{
+float:left;
+
+}
+.info-container{
+ 
+float:left;
+}
+.thumbnail-image{
+    width:45rem;
+}

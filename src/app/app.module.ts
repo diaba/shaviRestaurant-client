@@ -8,12 +8,15 @@ import { AppComponent } from './app.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { FoodComponent } from './components/food/food.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AuthInterceptor } from './service/auth.interceptor.service';
+import { SlideComponent } from './components/slide/slide.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -26,13 +29,15 @@ import { AuthInterceptor } from './service/auth.interceptor.service';
     HomeComponent,
     FoodComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    SlideComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    NgbModule,
+    FormsModule,
   ],
   providers: [AuthInterceptor],
   bootstrap: [AppComponent]

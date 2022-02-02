@@ -1,0 +1,16 @@
+<div class="centerMe">
+    <ngb-carousel>
+      <ng-template ngbSlide *ngFor="let special of specials; let i = index">
+        <!-- <p class="text-center">Click the slide image for more details.</p>
+       -->  <div class="picsum-img-wrapper">
+          <a routerLink="/meal/{{ special.id }}">
+            <img src={{special.imageUrl}} alt="Random second slide" class="img-responsive img">
+          </a>
+        </div>
+        <div class="carousel-caption">
+          <h3>{{special.name}}</h3>
+          <p>{{ special.price | currency}} </p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>

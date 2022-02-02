@@ -14,7 +14,7 @@ export interface Meal{
    orderList:{};
   }
 
-const MEAL_API = `${environment.baseUrl}/api/meals` ;
+const MEAL_API = `${environment.baseUrl}/api` ;
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -39,9 +39,14 @@ export class MealsService {
   // }
   getALlMeals(){
     return this.httpClient
-        .get<Meal[]>(`${MEAL_API}`);
+        .get<Meal[]>(`${MEAL_API}/meals`);
   }
 
+  getSpecialMeal(){
+    return this.httpClient
+        .get<Meal[]>(`${MEAL_API}/categories/1`);
+    
+  }
   // getMeal(id: number){
   //   return this.httpClient
   //   .get<Meal>(`${MEAL_API}/${id}` );
