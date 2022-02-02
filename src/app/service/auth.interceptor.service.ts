@@ -21,7 +21,20 @@ export class AuthInterceptor implements HttpInterceptor {
     }
     return next.handle(authReq);
   }
+
+  isUserLoggedIn() {
+    console.log("is log in.....");
+    let user = sessionStorage.getItem("username");
+    console.log(!(user === null));
+    return !(user === null);
+  }
+  
+  logOut() {
+    sessionStorage.removeItem("username");
+  }
+  
 }
+
 
 export const authInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

@@ -24,7 +24,7 @@ addToCart(meal: Meal) {
   ngOnInit(): void {
     console.log("HomeComponent..............");
     
-    this.mealsService.getALlMeals().subscribe(
+    this.mealsService.getSpecialMeal().subscribe(
       response => {
         
         this.meals = response

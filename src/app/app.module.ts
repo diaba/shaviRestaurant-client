@@ -16,6 +16,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AuthInterceptor } from './service/auth.interceptor.service';
 import { SlideComponent } from './components/slide/slide.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -31,6 +32,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CartComponent,
     CheckoutComponent,
     SlideComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     FormsModule,
   ],
-  providers: [AuthInterceptor],
+  providers: [  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
