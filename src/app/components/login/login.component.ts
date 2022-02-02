@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
@@ -8,6 +8,9 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
+})
+@Injectable({
+  providedIn: 'root'
 })
 export class LoginComponent implements OnInit {
   form: any = {

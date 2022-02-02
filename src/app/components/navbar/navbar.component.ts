@@ -8,11 +8,11 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn: boolean = false;
+   isLoggedIn: boolean = false;
   constructor( private login: LoginComponent) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.login.isSuLoggedIn();
+     this.isLoggedIn = this.login.isSuLoggedIn();
     
   }
 
