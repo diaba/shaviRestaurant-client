@@ -15,21 +15,22 @@ export class ProfileComponent implements OnInit {
   constructor( private httpClient: HttpClient, private customService: CustomerService) { }
    
   ngOnInit(): void {
-    
-    this.customService.getProfile().subscribe((res: Customer) => {
-      this.currentUser = res;
-      console.log("user"+ this.currentUser);
+    this.getProfile();
+    // this.customService.getProfile().subscribe((res: Customer) => {
+    //   this.currentUser = res;
+    //   console.log("user"+ this.currentUser);
       
-  });
+  // });
 }
 
-  // getProfile(){
-  //  return this.customService
-  //             .getProfile()
-  //             .subscribe((response) =>{
-  //               console.log(response);
-  //             });
-  // }
+  getProfile(){
+   return this.customService
+              .getProfile()
+              .subscribe((response) =>{
+                this.currentUser = response;
+                console.log(response);
+              });
+  }
   
 }
 
