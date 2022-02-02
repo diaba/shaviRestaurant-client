@@ -1,14 +1,14 @@
 
-<div  class="container"> 
+<div *ngIf="items.length >0" class="container"> 
 
-    <div *ngIf="items.length >0" class="container">
+    <div  class="container">
     <ul *ngFor="let item of items">
           <li>
             <div>
                 <img src="{{item.imageUrl}}" alt="cartItem.food.name">
             </div>
             <div>
-                <a routerLink="/food/cart">
+                <a routerLink="meal/{{item.id}}">
                     {{ item.name}}
                 </a>
             </div>

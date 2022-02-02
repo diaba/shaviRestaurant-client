@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8080'
+  baseUrl: 'http://diaba-env.eba-vem8qkrq.us-east-1.elasticbeanstalk.com'
 };
 
 /*

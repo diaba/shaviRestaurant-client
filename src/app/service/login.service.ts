@@ -17,10 +17,6 @@ const httpOptions = {
 
 
 export class LoginService {
-  
-
-
-
   constructor(private http: HttpClient) {
 
   }
