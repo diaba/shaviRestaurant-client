@@ -8,7 +8,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  // { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: '', component: HomeComponent },
   {path:'meal/:mealId',component: FoodComponent},
   {path:'cart',component: CartComponent},
   { path: 'login', component: LoginComponent },

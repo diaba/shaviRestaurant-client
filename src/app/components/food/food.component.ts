@@ -12,33 +12,34 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
 })
 export class FoodComponent implements OnInit {
 
-
+mealIndex: string | null ='';
   meal: Meal | undefined;
   meals: Meal[] = [];
   constructor(private mealService: MealsService, private route: ActivatedRoute
    ) { }
 
   ngOnInit(): void { 
-   
-
-
-
     console.log("FoodComponent...........");
   this.getMeals();
   console.log("Meals........"+this.meals);
   
-      // First get the meal id from the current route.
-  const routeParams = this.route.snapshot.paramMap;
-  
-  
-  const mealIdFromRoute = Number(routeParams.get('mealId'));
-  console.log("Route mealIdFromRoute: " + mealIdFromRoute);
-  // Find the product that correspond with the id provided in route.
+  this.route.paramMap.subscribe((params) => {
+    this.mealIndex = params.get('mealId')
+    this.meal = this.meals.find((x) =>{
+      const paramCID: string = params.get('mealId') || '0';
+      return x.id === parseInt(paramCID)
+    })
+  })
 
-  this.meal = this.meals.find(meal => meal.id === mealIdFromRoute);
-   console.log("Meal "+this.meal);
-   
   }
+
+  
+  // meal/:mealId
+
+
+
+  
+
 getMeals(){
   this.mealService.getALlMeals().subscribe(
     response => {
