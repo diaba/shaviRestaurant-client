@@ -7,6 +7,7 @@ import { FoodComponent } from './components/food/food.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { CategoryComponent } from './components/category/category.component';
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'menu', component: MenuComponent },
+  { path: 'menu/category/:catId', component: CategoryComponent },
 ];
 
 @NgModule({

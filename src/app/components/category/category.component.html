@@ -1,0 +1,59 @@
+<div class="container"  >
+    <header class="jumbotron">
+      <h3 ><a routerLink='category/{{category?.id}}' >
+        <strong>
+            
+       {{ category?.category }} 
+            </strong>   </a> 
+      </h3>
+
+    </header>
+    <app-food *ngFor="let num of category?.mealList"></app-food>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-4"  *ngFor="let meal of category?.mealList">
+
+        <div class="container-food" *ngIf="meal">
+            <div class="img-container">
+        
+                <img src="{{meal.imageUrl}}" class="  thumbnail-image">
+        
+        
+            </div>
+        
+            <div class="info-container pt-3">
+                <div class="d-flex flex-flow column wrap ml-2">
+                    <h5 class="meal-name">{{meal.name}}</h5>
+                </div>
+        
+                <div class="d-flex flex-column ml-2 "> <span class="new-price">{{ meal.price |currency}}</span>
+                </div>
+                <div class="d-flex flex-column ml-2 "> 
+                    <span>
+                        Serving: {{ meal.serving }}
+                    </span>
+                 
+                </div>
+                <!-- <div class="d-flex flex-column ml-2 "> 
+                     <span>
+                            Calories: 200
+                           
+                        </span>
+                 
+                </div>
+                <div class="d-flex flex-column ml-2 "> 
+                    <span>
+                            <a>See More...</a>
+                        </span>
+                 
+                </div> -->
+        
+                <div class="d-flex justify-content-center align-items-center pt-1">
+                    <div  class="btn btn-block">Add To Cart +</div>
+                </div>
+             
+            </div>
+    </div>
+ </div>
+ </div>

@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "restaurantdb.cpbzgkffxx4p.us-east-2.rds.amazonaws.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "shaviREst",
+            "database": "restaurantdb",
+            "username": "postgres",
+            "password": "postgres"
+        }
+    ]
+}

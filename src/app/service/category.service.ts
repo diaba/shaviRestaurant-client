@@ -21,5 +21,8 @@ export class CategoryService {
     return this.httpClient
         .get<Category[]>(`${CATEGORY_API}/categories`);
   }
-
+  getCategoryById(id: number){
+    return this.httpClient
+        .get<Category>(`${CATEGORY_API}/categories/${id}`);
+  }
 }

@@ -18,6 +18,7 @@ import { SlideComponent } from './components/slide/slide.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { CategoryComponent } from './components/category/category.component';
 
 
 
@@ -36,6 +37,7 @@ import { MenuComponent } from './components/menu/menu.component';
     ProfileComponent,
 
     MenuComponent,
+     CategoryComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,10 @@
 <div class="container" *ngFor="let cat of categories" >
     <header class="jumbotron">
-      <h3 >
-        <strong>  {{ cat.category }} </strong> 
+      <h3 ><a routerLink='category/{{cat.id}}' >
+        <strong>
+            
+       {{ cat.category }} 
+            </strong>   </a> 
       </h3>
     </header>
     
