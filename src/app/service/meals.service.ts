@@ -23,11 +23,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class MealsService {
-  static getALlMeals() {
-      throw new Error("Method not implemented.");
-  }
-
-
   constructor(private httpClient: HttpClient) { }
 
   // getALlMeals():Observable<Meal[]> {
