@@ -19,7 +19,8 @@ addToCart(meal: Meal) {
   window.alert('Your meal has been added to the cart!');
 }
   constructor(
-    private mealsService:MealsService  , private cartService: CartService) { }
+    private mealsService:MealsService  
+    , private cartService: CartService) { }
 
   ngOnInit(): void {
     console.log("HomeComponent..............");

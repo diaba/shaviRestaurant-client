@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Meal } from './meals.service';
 
 export interface Category{
   
   id:number;
   category:string;
-  mealList: [];
+  mealList: Meal[];
 }
 const CATEGORY_API = `${environment.baseUrl}/api` ;
 @Injectable({

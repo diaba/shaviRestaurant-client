@@ -1,0 +1,40 @@
+<div class="container" *ngFor="let cat of categories" >
+    <header class="jumbotron">
+      <h3 >
+        <strong>  {{ cat.category }} </strong> 
+      </h3>
+    </header>
+    
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-4" *ngFor="let food of cat.mealList">
+                    <div class="card">
+                        <div class="image-container">
+                    
+                            <a
+                            [routerLink]="['/meal', food.id]"> 
+                            
+                            <img src="{{food.imageUrl}}"
+                                    class="img-fluid rounded thumbnail-image"></a>
+                        </div>
+                        <div class="product-detail-container p-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="meal-name">{{food.name}}</h5>
+                                <div class="d-flex flex-column mb-2"> <span class="new-price">{{food.price|currency}}</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center pt-1">
+                                <span>
+                                    Serving: {{food.serving}}
+                                </span>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center pt-1">
+                                <span class="btn btn-primary" (click)="addToCart(food)">Add To Cart +</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

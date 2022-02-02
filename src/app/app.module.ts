@@ -17,6 +17,7 @@ import { AuthInterceptor } from './service/auth.interceptor.service';
 import { SlideComponent } from './components/slide/slide.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 
@@ -33,6 +34,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     CheckoutComponent,
     SlideComponent,
     ProfileComponent,
+
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
