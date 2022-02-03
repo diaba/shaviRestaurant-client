@@ -12,6 +12,11 @@ float:left;
  
 float:left;
 }
-.thumbnail-image{
-    width:45rem;
+/* img{
+    width:100%;
+} */
+.thumbnail-image {
+    display: block;
+    width: 100%;
+    height: 300px; 
 }

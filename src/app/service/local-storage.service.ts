@@ -19,11 +19,14 @@ export class LocalStorageService {
   getItem(key: string): string | null {
     return localStorage.getItem(key);
   }
-
   clear() {
     localStorage.clear();
   }
-  addFoods(key: string, value: Meal[]) {
-    localStorage.setItem(key, value.toString());
+  addFood(meal: Meal) {
+    localStorage.setItem(`${meal.id}`, JSON.stringify(meal))
+  }
+  getFood( ) {
+    return localStorage.getItem("foods");
+   // return localStorage.getItem("foods");
   }
 }

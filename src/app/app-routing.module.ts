@@ -14,7 +14,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: '', component: HomeComponent , canActivate: [AuthGuard]},
-  {path:'meal/:mealId',component: FoodComponent , canActivate: [AuthGuard]},
+  {path:'menu/:mealId',component: FoodComponent , canActivate: [AuthGuard]},
   {path:'cart',component: CartComponent , canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

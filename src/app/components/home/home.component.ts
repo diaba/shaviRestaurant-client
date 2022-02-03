@@ -26,14 +26,14 @@ addToCart(meal: Meal) {
   ngOnInit(): void {
     console.log("HomeComponent..............");
     
-    this.mealsService.getALlMeals().subscribe(
-      response => {
-        this.myMeals= response;
-        this.meals = response
-        console.log("Meals : "+this.meals);
+    // this.mealsService.getALlMeals().subscribe(
+    //   response => {
+    //     this.myMeals= response;
+    //     this.meals = response
+    //     console.log("Meals : "+this.meals);
       
-      }
-    );
+    //   }
+    // );
     
   }
 

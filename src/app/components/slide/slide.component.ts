@@ -27,12 +27,12 @@ export class SlideComponent implements OnInit {
   
   getSpecialMeal(){
     this.mealService.getALlMeals().subscribe(
-    response => {
-      console.log("SlideComponent => "+response);
+    // response => {
+    //   console.log("SlideComponent => "+response);
       
-      this.specials = response
+    //   this.specials = response
     
-    }
+    // }
   );
 }
 }
