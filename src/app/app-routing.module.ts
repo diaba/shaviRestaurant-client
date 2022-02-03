@@ -9,6 +9,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CategoryComponent } from './components/category/category.component';
 import { AuthGuard } from './service/auth.guard';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]},
   { path: 'menu', component: MenuComponent , canActivate: [AuthGuard]},
-  
+  { path: 'checkout', component: CheckoutComponent , canActivate: [AuthGuard]},
   { path: 'menu/category/:catId', component: CategoryComponent },
 
    // otherwise redirect to home

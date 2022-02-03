@@ -14,6 +14,7 @@ export class CartComponent implements OnInit {
   cart!: [];
   totalPrice: number | undefined;
   // totalPrice: Observable<number> | undefined;
+  // order: Order = {};
   constructor(private cartService: CartService, private http: HttpClient) {}
 
   changeQuantity(cartItem: Meal, quantityInString: string) {
