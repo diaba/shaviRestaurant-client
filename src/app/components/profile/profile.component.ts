@@ -12,6 +12,8 @@ import { CustomerService } from 'src/app/service/customer.service';
 export class ProfileComponent implements OnInit {
   customer!: Customer; 
   currentUser:any;
+  errorMessage:any;
+  isSaved = false;
   constructor( private httpClient: HttpClient, private customService: CustomerService) { }
    
   ngOnInit(): void {
@@ -31,6 +33,18 @@ export class ProfileComponent implements OnInit {
                 console.log(response);
               });
   }
+  updateProfile(){    
+   
+    this.customService.updateProfile(this.currentUser).subscribe(
+      data => {
+        console.log(data);
+        this.isSaved = true;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+      }
+    );
   
 }
 
+}

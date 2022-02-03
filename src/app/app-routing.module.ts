@@ -8,17 +8,22 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CategoryComponent } from './components/category/category.component';
+import { AuthGuard } from './service/auth.guard';
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: 'login' },
-  { path: '', component: HomeComponent },
-  {path:'meal/:mealId',component: FoodComponent},
-  {path:'cart',component: CartComponent},
+  { path: '', component: HomeComponent , canActivate: [AuthGuard]},
+  {path:'meal/:mealId',component: FoodComponent , canActivate: [AuthGuard]},
+  {path:'cart',component: CartComponent , canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'menu', component: MenuComponent },
+  { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]},
+  { path: 'menu', component: MenuComponent , canActivate: [AuthGuard]},
+  
   { path: 'menu/category/:catId', component: CategoryComponent },
+
+   // otherwise redirect to home
+   { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

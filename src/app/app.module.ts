@@ -38,6 +38,7 @@ import { CategoryComponent } from './components/category/category.component';
 
     MenuComponent,
      CategoryComponent,
+
   ],
   imports: [
     BrowserModule,

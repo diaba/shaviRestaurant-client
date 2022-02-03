@@ -5,4 +5,6 @@ export class Customer{
     firstName: string | undefined;
     lastName: string | undefined;
     token: string | undefined;
+    address: string | undefined;
+    phone: string | undefined;
 }

@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 
 const CUSTOMER_API = `${environment.baseUrl}/api/customers` ;
+
+ 
 @Injectable({
   providedIn: 'root'
 })
@@ -25,5 +27,18 @@ export class CustomerService {
     // ,{ headers: {'authorization': this.token.getToken()}} 
   )
   }
+  updateProfile(customer: Customer):Observable<Customer>{
+    return this.httpClient
+    .post<Customer>(`${this.serviceUrl}`, customer)
+
+    // { headers: {'authorization': this.token.getToken}})
+  }
+//   update(user: User) {
+//     return this.http.put(`${config.apiUrl}/users/${user.id}`, user);
+// }
+// getById(id: number) {
+//   return this.http.get(`${config.apiUrl}/users/${id}`);
+// }
+
   
 }
