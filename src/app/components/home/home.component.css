@@ -2,20 +2,24 @@ body {
     background-color: #eee
 }
 
-.card { 
-    margin:1rem;
-    overflow: hidden;
-    background-color: #fff;
-    border: none;
-    border-radius: 60px 60px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-}
+
 .image-container {
-    position: relative;
+    /* position: relative; */
+    object-fit: scale-up;
 }
+/* fill - stretch the image.
+contain - preserve the aspect ratio of the image.
+cover - Fill the height and width of the box.
+none - Keep the original size.
+scale-down */
+
 .thumbnail-image {
     border-radius: 20px !important;
-    box-shadow: 0 1px 8px 0 #F30E0E, 0 6px 20px 0 #FFA602
+    box-shadow: 0 1px 8px 0 #F30E0E, 0 6px 20px 0 #FFA602;
+    min-width: 350px; /* You can set the dimensions to whatever you want */
+    max-height: 200px;
+    
+   
 }
 
 .meal-name {

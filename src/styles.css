@@ -24,13 +24,22 @@ input {
     border: 0;
     outline: 0;
     font-size: 16px;
-    border-radius: 100px;
+    border-radius: 100px !important;
+    /* min-width: 150px; */
     padding: 16px;
   /* //  background-color: #EBECF0; */
-    text-shadow: 1px 1px 0 #F30E0E;
+    /* text-shadow: 1px 1px 0 #F30E0E; */
 }
 .centerMe{
     display:flex;
     justify-content:center;
     align-items:center;
+}
+.card , .jumbotron{ 
+    margin:1rem;
+    overflow: hidden;
+    background-color: #fff;
+    border: none;
+    border-radius: 60px 60px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }

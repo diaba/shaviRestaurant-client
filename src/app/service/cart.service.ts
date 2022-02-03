@@ -1,33 +1,44 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { LocalStorageService } from './local-storage.service';
 import { Meal } from './meals.service';
-export interface CartItem{
-  meals: Meal;
+import { OrderService } from './order.service';
+export interface Cart{
+  meals: Meal[];
   quantity: number;
 }
+
 const CART_API = `${environment.baseUrl}/api/orders` ;
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  private cart = new BehaviorSubject({
+    orderId: this.orderId,
+    itemCount: this.itemCount
+  });
 
-  constructor(private http: HttpClient, private httpClient: HttpClient) { }
-  items :Meal[]=[];  // items in the cart
-  meals: Meal[] = [];
-  cart: CartItem[] | undefined; // model of our cart
+  cartValue = this.cart.asObservable();
+  items: any[] = [];
+
+  constructor(private orders: OrderService,private http: HttpClient,private storage: LocalStorageService, private httpClient: HttpClient) { }
+
 //   /* . . . */
 // Try to save cart using localstorage. This
 // clear after checkout
 // update date after every change
-  
+
     addToCart(meal: Meal) {
       this.items.push(meal);
       meal.quantity = 1;
+      // this.storage.addItem("mealId", `${meal.id}`);
+      // this.storage.addItem("quantity", `${meal.quantity}`);
       console.log("meal: "+this.getItems());
     }
     changeQuantity(foodId:number, quantity:number){
-    let cartItem = this.items.find(item => item.id === foodId);
+    let cartItem = this.items.find((item: { id: number; }) => item.id === foodId);
     if(!cartItem) return;
     cartItem.quantity = quantity;
   }
@@ -35,15 +46,15 @@ export class CartService {
       return this.items;
     }
   
-    getOrderS(){
-        return this.httpClient
-            .get<CartItem[]>(`${CART_API}`);  
-    }
+    // getOrderS(){
+    //     return this.httpClient
+    //         .get<CartItem[]>(`${CART_API}`);  
+    // }
 
-    addOrder(mealId:number, quantity:number){
-      return this.httpClient
-            .post<CartItem[]>(`${CART_API}`,{mealId , quantity});  
-    }
+    // addOrder(mealId:number, quantity:number){
+    //   return this.httpClient
+    //         .post<CartItem[]>(`${CART_API}`,{mealId , quantity});  
+    // }
 //     clearCart() {
 //       this.meals = [];
 //       return this.meals;
@@ -60,14 +71,48 @@ export class CartService {
 //     this.items.push(new CartItem(meal));
 //   }
 
-  removeFromCart(foodId:number): void{
-    this.items = 
-    this.items.filter(item => item.id != foodId);
+  // removeFromCart(foodId:number): void{
+  //   this.items = 
+  //   this.items.filter(item => item.id != foodId);
+  // }
+
+
+
+  // cartValue = this.cart.asObservable();
+
+
+  get orderId(): string {
+    const id = this.storage.getItem('order-id');
+    return id ? id : '';
   }
 
+  set orderId(id: string) {
+    this.storage.addItem('order-id', id);
+    this.cart.next({ orderId: id, itemCount: this.itemCount });
+  }
 
+  get itemCount(): number {
+    const itemCount = this.storage.getItem('item-count');
 
-  // getCart():CartItem[]{
-  //   return this.cart;
-  // }
+    return itemCount ? parseInt(itemCount) : 0;
+  }
+
+  set itemCount(amount: number) {
+    this.storage.addItem('item-count', amount.toString());
+    this.cart.next({ orderId: this.orderId, itemCount: amount });
+  }
+
+  incrementItemCount(amount: number) {
+    this.itemCount = this.itemCount + amount;
+  }
+
+  decrementItemCount(amount: number) {
+    this.itemCount = this.itemCount - amount;
+  }
+
+  clearCart() {
+    this.storage.deleteItem('item-count');
+    this.items = [];
+    return this.items;
+  }
 }

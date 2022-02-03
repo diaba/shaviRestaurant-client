@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/service/cart.service';
 import { Meal } from 'src/app/service/meals.service';
+import { Order, OrderService } from 'src/app/service/order.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,12 +12,16 @@ import { Meal } from 'src/app/service/meals.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  items: Meal[] = this.cartService.getItems();
-  cart!: [];
   totalPrice: number | undefined;
-  // totalPrice: Observable<number> | undefined;
-  // order: Order = {};
-  constructor(private cartService: CartService, private http: HttpClient) {}
+  order: Order = {
+    id: 0,
+    mealId: 0,
+    quantity: 1
+  };
+  items: Meal[] = this.cartService.getItems();
+  summary: { name: string, amount: string | undefined, id: string }[] = [];
+
+  constructor(private cart: CartService,private router: Router, private orders: OrderService,private cartService: CartService, private http: HttpClient) {}
 
   changeQuantity(cartItem: Meal, quantityInString: string) {
     const quantity = parseInt(quantityInString);
@@ -23,17 +29,35 @@ export class CartComponent implements OnInit {
     this.getTotal();
   }
   removeFromCart(meal: Meal) {
-    this.cartService.removeFromCart(meal.id);
+   // this.cartService.removeFromCart(meal.id);
     // refresh the cart
     this.items = this.cartService.getItems();
     // refresh balanced
     this.getTotal();
   }
   ngOnInit(): void {
-    console.log('Cart component => items in cart' + this.items.length);
-    this.getTotal()
+    this.getTotal();
+    
+    this.orders.getOrder(this.cart.orderId)
+      .subscribe(
+        order => this.processOrder(order)
+      );
 
   }
+  private processOrder(order: Order) {
+
+    this.order = order;
+
+  }
+  checkout() {
+    //create order object
+    
+    this.items = this.cartService.clearCart();
+    console.warn('Your order has been submitted');
+    this.router.navigateByUrl('/');
+
+  }
+
 getTotal(){
   console.log("Get total.......");
 let total = 0;

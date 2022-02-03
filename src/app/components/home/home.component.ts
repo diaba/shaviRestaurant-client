@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
 import { Meal, MealsService } from './../../service/meals.service';
@@ -11,6 +11,7 @@ import { Meal, MealsService } from './../../service/meals.service';
 })
 export class HomeComponent implements OnInit {
 meals:Meal[] | undefined;  
+@Input() myMeals:Meal[] | undefined;
 
 addToCart(meal: Meal) {
   this.cartService.addToCart(meal);
@@ -27,7 +28,7 @@ addToCart(meal: Meal) {
     
     this.mealsService.getALlMeals().subscribe(
       response => {
-        
+        this.myMeals= response;
         this.meals = response
         console.log("Meals : "+this.meals);
       

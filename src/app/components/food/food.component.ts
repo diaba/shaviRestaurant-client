@@ -12,31 +12,47 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
 })
 export class FoodComponent implements OnInit {
 
-mealIndex: string | null ='';
-  meal: Meal | undefined;
+  id: string = '';
+  quantity: number = 0;
+ 
+  mealIndex: string | null ='';
+  meal: Meal | any;
   meals: Meal[] = [];
-  constructor(private mealService: MealsService, private route: ActivatedRoute
+
+  constructor(private mealService: MealsService, private route: ActivatedRoute,
+     private cartService: CartService
    ) { }
 
   ngOnInit(): void { 
     console.log("FoodComponent...........");
   this.getMeals();
+  // save to local storage
   console.log("Meals........"+this.meals);
-  
+  // get met by id
   this.route.paramMap.subscribe((params) => {
-    this.mealIndex = params.get('mealId')
-    this.meal = this.meals.find((x) =>{
-      const paramCID: string = params.get('mealId') || '0';
-      return x.id === parseInt(paramCID)
-    })
+    const id :any = params.get('mealId')
+    this.meal = this.getMealById(id);
   })
+
 
   }
 
+  addToCart(meal: Meal) {
+    this.cartService.addToCart(meal);
+    console.log("Cart...."+meal.name);
+    
+    window.alert('Your meal has been added to the cart!');
+  }
   
-  // meal/:mealId
 
+  
+//   // meal/:mealId
 
+getMealById(id :string){
+  this.mealService.getMeal(parseInt(id)).subscribe(
+    (x) => console.log(x)
+  )
+}
 
   
 
@@ -49,7 +65,7 @@ getMeals(){
     
     }
   );
-}
-  }
 
+  }
+}
 

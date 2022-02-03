@@ -42,10 +42,10 @@ export class MealsService {
         .get<Meal[]>(`${MEAL_API}/categories/1`);
     
   }
-  // getMeal(id: number){
-  //   return this.httpClient
-  //   .get<Meal>(`${MEAL_API}/${id}` );
-  // }
+  getMeal(id: number){
+    return this.httpClient
+    .get<Meal>(`${MEAL_API}/meals/${id}` );
+  }
  
 }
 
