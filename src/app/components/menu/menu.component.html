@@ -1,19 +1,16 @@
 <div class="container" *ngFor="let cat of categories" >
-    <header class="jumbotron">
+    <!-- <header class="jumbotron">
       <h3 ><a routerLink='category/{{cat.id}}' >
-        <strong>
-            
+        <strong>           
        {{ cat.category }} 
-            </strong>   </a> 
+     </strong>   </a> 
       </h3>
-    </header>
-    
+    </header>  -->
         <div class="container mt-5">
             <div class="row">
                 <div class="col-4" *ngFor="let food of cat.mealList">
                     <div class="card">
-                        <div class="image-container">
-                    
+                        <div class="image-container">                   
                             <a
                             routerLink="/meal/{{food.id}}"> 
                             
@@ -31,9 +28,7 @@
                                     Serving: {{food.serving}}
                                 </span>
                             </div>
-                            <div class="d-flex justify-content-center align-items-center pt-1">
-                                <span class="btn btn-primary" (click)="addToCart(food)">Add To Cart +</span>
-                            </div>
+                          <app-add-to-cart></app-add-to-cart>
                         </div>
                     </div>
                 </div>

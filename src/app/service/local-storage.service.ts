@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Meal } from './meals.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,8 @@ export class LocalStorageService {
 
   clear() {
     localStorage.clear();
+  }
+  addFoods(key: string, value: Meal[]) {
+    localStorage.setItem(key, value.toString());
   }
 }
