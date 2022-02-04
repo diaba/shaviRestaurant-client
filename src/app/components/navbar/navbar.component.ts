@@ -9,14 +9,16 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-   isLoggedIn: boolean = false;
-  constructor( private login: LoginComponent, private tokenStorage : TokenStorageService) { }
+   isLoggedIn: boolean = true;
+  constructor( private login: LoginComponent, private tokenStorage : TokenStorageService, private test:LoginComponent) { }
 
   ngOnInit(): void {
-     this.isLoggedIn = this.login.isSuLoggedIn();
+     //this.isLoggedIn = this.login.isSuLoggedIn();
+    console.log(this.isLoggedIn);
     
   }
   logout(){
+    this.test.setLog(false);
     this.tokenStorage.signOut();
   }
 

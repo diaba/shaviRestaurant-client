@@ -14,6 +14,8 @@ export class AuthGuard implements CanActivate {
         const user = this._token.getUser();
         if (user) {
             // authorised so return true
+            console.log("CanActivate "+user);
+            
             return true;
         }
 

@@ -21,8 +21,6 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]},
   { path: 'menu', component: MenuComponent , canActivate: [AuthGuard]},
   { path: 'checkout', component: CheckoutComponent , canActivate: [AuthGuard]},
-  { path: 'menu/category/:catId', component: CategoryComponent },
-
    // otherwise redirect to home
    { path: '**', redirectTo: '' }
 ];

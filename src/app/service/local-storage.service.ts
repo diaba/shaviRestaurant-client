@@ -27,6 +27,6 @@ export class LocalStorageService {
   }
   getFood( ) {
     return localStorage.getItem("foods");
-   // return localStorage.getItem("foods");
+   ///return localStorage.getItem("foods");
   }
 }

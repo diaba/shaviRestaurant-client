@@ -23,12 +23,7 @@ button, .btn,
 input {
     border: 0;
     outline: 0;
-    font-size: 16px;
     border-radius: 100px !important;
-    /* min-width: 150px; */
-    padding: 16px;
-  /* //  background-color: #EBECF0; */
-    /* text-shadow: 1px 1px 0 #F30E0E; */
 }
 .centerMe{
     display:flex;

@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     password: null
   };
   isLoggedIn = false;
-  isLoginFailed = false;
+   isLoginFailed = false;
   errorMessage = '';
 
   
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
       if (this.tokenStorage.getToken()) {
-        this.isLoggedIn = true;
+        this.setLog(true);
       }
     }
   
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveUser(data);
 
         this.isLoginFailed = false;
-        this.isLoggedIn = true;
+        this.setLog(true);
   
         this.reloadPage();
       
@@ -56,6 +56,9 @@ export class LoginComponent implements OnInit {
     }
     reloadPage(): void {
       window.location.reload();
+    }
+    setLog( islog: boolean): void {
+        this.isLoggedIn = islog;
     }
  isSuLoggedIn(): boolean {
    return this.isLoggedIn;

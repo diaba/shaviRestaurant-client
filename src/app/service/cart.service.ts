@@ -5,81 +5,51 @@ import { environment } from 'src/environments/environment';
 import { LocalStorageService } from './local-storage.service';
 import { Meal } from './meals.service';
 import { OrderService } from './order.service';
-export interface Cart{
+export interface Cart {
   meals: Meal[];
   quantity: number;
 }
 
-const CART_API = `${environment.baseUrl}/api/orders` ;
+const CART_API = `${environment.baseUrl}/api/orders`;
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
   private cart = new BehaviorSubject({
     orderId: this.orderId,
-    itemCount: this.itemCount
+    itemCount: this.itemCount,
   });
 
   cartValue = this.cart.asObservable();
   items: any[] = [];
 
-  constructor(private orders: OrderService,private http: HttpClient,private storage: LocalStorageService, private httpClient: HttpClient) { }
+  constructor(
+    private orders: OrderService,
+    private http: HttpClient,
+    private storage: LocalStorageService,
+    private httpClient: HttpClient
+  ) {}
 
-//   /* . . . */
-// Try to save cart using localstorage. This
-// clear after checkout
-// update date after every change
+  addToCart(meal: Meal) {
+    this.items.push(meal);
+    meal.quantity = 1;
 
-    addToCart(meal: Meal) {
-      this.items.push(meal);
-      meal.quantity = 1;
-      // this.storage.addItem("mealId", `${meal.id}`);
-      // this.storage.addItem("quantity", `${meal.quantity}`);
-      console.log("meal: "+this.getItems());
-    }
-    changeQuantity(foodId:number, quantity:number){
-    let cartItem = this.items.find((item: { id: number; }) => item.id === foodId);
-    if(!cartItem) return;
+    console.log('meal: ' + this.getItems());
+  }
+  changeQuantity(foodId: number, quantity: number) {
+    let cartItem = this.items.find(
+      (item: { id: number }) => item.id === foodId
+    );
+    if (!cartItem) return;
     cartItem.quantity = quantity;
   }
-    getItems() {
-      return this.items;
-    }
-  
-    // getOrderS(){
-    //     return this.httpClient
-    //         .get<CartItem[]>(`${CART_API}`);  
-    // }
+  getItems() {
+    return this.items;
+  }
 
-    // addOrder(mealId:number, quantity:number){
-    //   return this.httpClient
-    //         .post<CartItem[]>(`${CART_API}`,{mealId , quantity});  
-    // }
-//     clearCart() {
-//       this.meals = [];
-//       return this.meals;
-//     }
-// }
-// items :Meal[]=[];
-// CartItem :{ meal: Meal; quantity: number; } | undefined 
-//   addToCart(meal: Meal):void{
-//     let cartItem = this.items.find(item => item.id === meal.id);
-//     if(cartItem){
-//       this.changeQuantity(meal.id, cartItem.quantity + 1);
-//       return;
-//     }
-//     this.items.push(new CartItem(meal));
-//   }
-
-  // removeFromCart(foodId:number): void{
-  //   this.items = 
-  //   this.items.filter(item => item.id != foodId);
-  // }
-
-
-
-  // cartValue = this.cart.asObservable();
-
+  removeFromCart(foodId: number): void {
+    this.items = this.items.filter((item) => item.id != foodId);
+  }
 
   get orderId(): string {
     const id = this.storage.getItem('order-id');

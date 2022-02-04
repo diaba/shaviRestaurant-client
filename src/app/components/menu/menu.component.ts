@@ -15,6 +15,7 @@ export class MenuComponent implements OnInit {
  
   addToCart(meal: Meal) {
     this.cartService.addToCart(meal);
+    
     console.log("Cart...."+meal.name);  
     window.alert('Your meal has been added to the cart!');
   }
