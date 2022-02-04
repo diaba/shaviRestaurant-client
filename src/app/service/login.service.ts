@@ -17,16 +17,23 @@ const httpOptions = {
 
 
 export class LoginService {
-  constructor(private http: HttpClient) {
+  private loggedIn = new BehaviorSubject<boolean>(false); // {1}
 
+  constructor(private http: HttpClient, private router: Router) {
+
+  }
+  setLoggedIn(state: boolean) { this.loggedIn.next( state); }
+  get isLoggedIn() {
+    return this.loggedIn.asObservable(); 
   }
   login(email: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'login', {
       email,
       password
     }, httpOptions);
+    
   }
-//this.firstName,this.lastName,this.address, this.phone, this.password,this.username
+
   register(firstName: string, lastName: string, address: string,phone:string, password: string, email: string): Observable<any> {
     return this.http.post(AUTH_API + 'register', {
      firstName,
@@ -39,5 +46,8 @@ export class LoginService {
   }
   
   
-  
+  logout() {                            // {4}
+    this.loggedIn.next(false);
+    this.router.navigate(['/login']);
+  }
 }

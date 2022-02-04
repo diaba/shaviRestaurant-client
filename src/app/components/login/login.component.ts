@@ -31,7 +31,10 @@ export class LoginComponent implements OnInit {
         this.setLog(true);
       }
     }
-  
+  getUserEmail(){
+    return this.form.username;
+  }
+
     checkLogin(): void {
       const { username, password } = this.form;
   
@@ -40,7 +43,7 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveToken(data.jwt);
           this.tokenStorage.saveUser(data);
           this.tokenStorage.saveUser(data);
-
+        this.loginService.setLoggedIn(true);
         this.isLoginFailed = false;
         this.setLog(true);
   

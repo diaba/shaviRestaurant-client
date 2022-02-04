@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { LoginService } from '../../service/login.service';
 import { LoginComponent } from '../login/login.component';
@@ -9,17 +10,15 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-   isLoggedIn: boolean = true;
-  constructor( private login: LoginComponent, private tokenStorage : TokenStorageService, private test:LoginComponent) { }
+   isLoggedIn$: Observable<boolean> | undefined;  
+  constructor(private loginService: LoginService, login: LoginComponent, private tokenStorage : TokenStorageService, private test:LoginComponent) { }
 
   ngOnInit(): void {
-     //this.isLoggedIn = this.login.isSuLoggedIn();
-    console.log(this.isLoggedIn);
-    
+   this.isLoggedIn$ = this.loginService.isLoggedIn;
   }
-  logout(){
-    this.test.setLog(false);
-    this.tokenStorage.signOut();
+
+  onLogout(){
+    this.loginService.logout();                     
   }
 
 }
