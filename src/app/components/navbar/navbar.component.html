@@ -18,12 +18,12 @@
                 <li class="nav-item active ml-3" *ngIf="isLoggedIn$ | async as isLoggedIn">
                     <a class="nav-link" routerLink="/menu" >Menu</a>
                 </li>
-                <li class="nav-item ml-3" >
+                <!-- <li class="nav-item ml-3" >
                     <a class="nav-link mr-3" routerLink="register">Sign Up</a>
-                </li>
-                <li class="nav-item mr-3" *ngIf="isLoggedIn$ | async as isLoggedIn" >
+                </li> -->
+                <li class="nav-item mr-3 ml-3" *ngIf="isLoggedIn$ | async as isLoggedIn" >
 
-                    <a routerLink="/cart" class="button fancy-button">
+                    <a routerLink="/cart" class="button fancy-button ">
                         <h4> <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> </span></h4>
 
 
@@ -31,7 +31,7 @@
                 </li>
                 <li class="nav-item ml-3" >
 
-                    <a routerLink="/login" class="nav-link">Login</a>
+                    <a routerLink="/login" hidden="true" hrefclass="nav-link">Login</a>
                 </li>
                 <li class="nav-item active" *ngIf="isLoggedIn$ | async as isLoggedIn" >
                     <a class="nav-link" routerLink="login" (click)="onLogout()">Logout</a>

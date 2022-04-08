@@ -50,7 +50,7 @@
                   <div class="form-outline">
                     <input id="form1" min="1" #quantitySelect name="quantity" value="1" type="number"
                       (change)="changeQuantity(item,quantitySelect.value)" class="form-control" />
-                    <label class="form-label" for="form1">Quantity</label>
+                    <label class="form-label ml-2" for="form1">Quantity</label>
                   </div>
 
                   <button class="btn px-3 ms-2" (click)="changeQuantity(item,quantitySelect.value)"
@@ -96,6 +96,25 @@
             <img class="me-2" width="45px"
               src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.webp"
               alt="PayPal acceptance mark" />
+              <div class="centerMe">
+                
+                <div class="mr-5"><h6>Payment method</h6> </div>
+              <div class="form-check mr-4">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Card in file
+                </label>
+                <img class="me-2" width="65px"
+                src="./../../../assets/images/card.png"
+                alt="PayPal acceptance mark" />
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Other payment
+                </label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -123,36 +142,72 @@
                 </div>
                 <span><strong>{{totalPrice| currency}}</strong></span>
               </li>
+           
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h5 class="mb-0 ml-2">Delivery Method</h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              
+              
+              <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+
+
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Pick up
+                    </label>
+                    <div>
+                      
+                    <input type="time" name="timePickup" placeholder="time to pick up" id="timePickuptimePickupflexRadioDefault">
+                    </div>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Delivery
+                    </label>
+                  </div>                 
+                  <div>
+                    <label for="name">
+                      Name
+                    </label>
+                    <input id="name" type="text" formControlName="name">
+                  </div>
+                  <div>
+                    <label for="address">
+                      Address
+                    </label>
+                    <input id="address" type="text" formControlName="address">
+                  </div>
+                  <div class="d-flex justify-content-center align-items-center pt-1 mt-4">
+                    <div class="btn btn-block" ><button class="btn btn-block" type="submit">Purchase
+                      <img class="me-2" width="45px"
+              src="./../../../assets/images/payment.png"
+              alt="PayPal acceptance mark" />
+                      </button></div>
+                </div>
+                  
+                
+                </form>
+                
+                
+              </li>
+
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<section class="centerMe">
-
-  <div class="container">
-    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-      <div class="text-center">
-        <h3>Cart Update your address </h3>
-      </div>
-      <div>
-        <label for="name">
-          Name
-        </label>
-        <input id="name" type="text" formControlName="name">
-      </div>
-
-      <div>
-        <label for="address">
-          Address
-        </label>
-        <input id="address" type="text" formControlName="address">
-      </div>
-
-      <button class="button" type="submit">Purchase</button>
-
-    </form>
   </div>
 </section>

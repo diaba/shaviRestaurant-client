@@ -23,8 +23,8 @@ export class MenuComponent implements OnInit {
     console.log("MenuComponent..............");
     this.categoryService.getALlMeals().subscribe(
       response => {
-        this.categories = response
-        this.storage.addItem("foods", this.categories.toString())
+       this.categories = response
+       this.storage.addItem("foods", this.categories.toString())
         console.log("Category : "+this.categories);     
       }
     );

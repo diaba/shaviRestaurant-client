@@ -73,6 +73,7 @@ export class CartComponent implements OnInit {
     );
     this.checkoutForm.reset();
     // email send to your phone sms to send tracking
+    this.router.navigate(['/menu']);
   }
 
   getTotal() {

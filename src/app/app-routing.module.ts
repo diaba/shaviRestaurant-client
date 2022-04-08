@@ -13,13 +13,16 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: 'login' },
-  { path: '', component: HomeComponent , canActivate: [AuthGuard]},
+  { path: '', component: HomeComponent },
+  // , canActivate: [AuthGuard]},
   {path:'menu/:mealId',component: FoodComponent , canActivate: [AuthGuard]},
-  {path:'cart',component: CartComponent , canActivate: [AuthGuard]},
+  {path:'cart',component: CartComponent },
+  //, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]},
-  { path: 'menu', component: MenuComponent , canActivate: [AuthGuard]},
+  { path: 'menu', component: MenuComponent} ,
+  // canActivate: [AuthGuard]},
   { path: 'checkout', component: CheckoutComponent , canActivate: [AuthGuard]},
    // otherwise redirect to home
    { path: '**', redirectTo: '' }

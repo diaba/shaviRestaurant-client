@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/service/login.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 
@@ -13,6 +14,7 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
   providedIn: 'root'
 })
 export class LoginComponent implements OnInit {
+  isLoggedIn$: Observable<boolean> | undefined; 
   form: any = {
     username: null,
     password: null
@@ -27,9 +29,10 @@ export class LoginComponent implements OnInit {
     private loginService:LoginService, private tokenStorage: TokenStorageService) { }
 
     ngOnInit(): void {
-      if (this.tokenStorage.getToken()) {
-        this.setLog(true);
-      }
+      // this.isLoggedIn$ = this.loginService.isLoggedIn;
+      // if (this.tokenStorage.getToken()) {
+      //   this.setLog(true);
+      // }
     }
   getUserEmail(){
     return this.form.username;
@@ -40,16 +43,17 @@ export class LoginComponent implements OnInit {
   
       this.loginService.login(username, password).subscribe(
         data => {
+          console.log("Login successful");
           this.tokenStorage.saveToken(data.jwt);
           this.tokenStorage.saveUser(data);
           this.tokenStorage.saveUser(data);
         this.loginService.setLoggedIn(true);
         this.isLoginFailed = false;
         this.setLog(true);
-  
-        this.reloadPage();
       
-          this.router.navigate(['/']);
+       // this.reloadPage();
+      
+          this.router.navigate(['/menu']);
         },
         err => {
           this.errorMessage = err.error.message;

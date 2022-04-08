@@ -12,64 +12,94 @@
     </div> -->
     
     <!-- edit form column -->
-    <div class="col-md-9 personal-info">
-      <div class="alert alert-info alert-dismissable">
-        <a class="panel-close close" data-dismiss="alert">×</a> 
-        <i class="fa fa-coffee"></i>
-        This is an <strong>.alert</strong>. Use this to show important messages to the user.
+    <div class="container">
+     <div class="row">
+      <div class="col-md-9 personal-info">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-coffee"></i>
+          This is an <strong>.alert</strong>. Use this to show important messages to the user.
+        </div>
+        <h3>Personal info</h3>
+        
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">First name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value="   {{ currentUser.firstName }}
+             ">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Last name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value=" {{ currentUser.lastName }}">
+            </div>
+          </div>
+   
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Phone</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value=" {{ currentUser.phone }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Password:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" value=" {{ currentUser.password }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Confirm password:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" value="{{ currentUser.password }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-12">
+              <input type="button" (click)="updateProfile()" class="btn btn-primary mr-6" value="Save Changes">
+              <span></span>
+              <input type="reset" class="btn btn-default ml-5" value="Cancel">
+            </div>
+          </div>
+          <div class="form-group"*ngIf="!isSaved">
+            <div      
+              role="alert"          
+            >
+               {{ errorMessage }}
+            </div>
+          </div>
+        </form>
       </div>
-      <h3>Personal info</h3>
+      <div class="col-md-9 personal-info">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-coffee"></i>
+          This is an <strong>.alert</strong>. Use this to show important messages to the user.
+        </div>
+        <h3>Card in file</h3>
+        
+        <form class="form-horizontal" role="form">
+       
+          
+   
       
-      <form class="form-horizontal" role="form">
-        <div class="form-group">
-          <label class="col-lg-3 control-label">First name:</label>
-          <div class="col-lg-8">
-            <input class="form-control" type="text" value="   {{ currentUser.firstName }}
-           ">
+          <div class="form-group">
+            <label class="col-md-3 control-label">Actual card :</label>
+            <div class="col-md-8">
+              <img class="me-2" width="300px"
+              src="./../../../assets/images/card.png"
+              alt="PayPal acceptance mark" />
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Last name:</label>
-          <div class="col-lg-8">
-            <input class="form-control" type="text" value=" {{ currentUser.lastName }}">
-          </div>
-        </div>
- 
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Phone</label>
-          <div class="col-lg-8">
-            <input class="form-control" type="text" value=" {{ currentUser.phone }}">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Password:</label>
-          <div class="col-md-8">
-            <input class="form-control" type="password" value=" {{ currentUser.password }}">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Confirm password:</label>
-          <div class="col-md-8">
-            <input class="form-control" type="password" value="{{ currentUser.password }}">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label"></label>
-          <div class="col-md-12">
-            <input type="button" (click)="updateProfile()" class="btn btn-primary mr-6" value="Save Changes">
-            <span></span>
-            <input type="reset" class="btn btn-default ml-5" value="Cancel">
-          </div>
-        </div>
-        <div class="form-group"*ngIf="!isSaved">
-          <div      
-            role="alert"          
-          >
-             {{ errorMessage }}
-          </div>
-        </div>
-      </form>
+  
+  
+        
+        </form>
+      </div>
     </div>
+ 
 </div>
 </div>
 <hr>

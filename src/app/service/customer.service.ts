@@ -13,7 +13,7 @@ const CUSTOMER_API = `${environment.baseUrl}/api/customers` ;
   providedIn: 'root'
 })
 export class CustomerService {
-  private serviceUrl = 'http://localhost:8080/api/customerByEmail/'
+  private serviceUrl = 'http://localhost:8080/api/customerByEmail/ana@tes.gb'
 
   constructor(private httpClient: HttpClient, private token: TokenStorageService, private login: LoginComponent) { }
   getCustomer(){
@@ -25,7 +25,7 @@ export class CustomerService {
     // const headers = new Headers();
     // headers.append('authentication1', token.get) 
     return this.httpClient
-    .get<Customer>(`${this.serviceUrl}${username}`
+    .get<Customer>(`${this.serviceUrl}`
     // ,{ headers: {'authorization': this.token.getToken()}} 
   )
   }
@@ -35,12 +35,6 @@ export class CustomerService {
 
     // { headers: {'authorization': this.token.getToken}})
   }
-//   update(user: User) {
-//     return this.http.put(`${config.apiUrl}/users/${user.id}`, user);
-// }
-// getById(id: number) {
-//   return this.http.get(`${config.apiUrl}/users/${id}`);
-// }
 
   
 }
